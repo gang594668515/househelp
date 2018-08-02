@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>新增产品</h3>
+        <div class="container-fluid">
+            <form id="addProductForm" data-parsley-validate="true" onsubmit="return false">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="alert alert-danger text-center" id="productError"></div>
+                            <div class="page-header">
+                                <span>产品名称、规格型号一旦保存不能修改；数量、单价请输入整数，或者最多两位小数；为减少用户操作难度，数据仅作为参考，不参与库存计算。</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="text-muted">产品名称<span style="color: red;">*</span></label>
+                                <input id="name" name="name" type="text" class="form-control required"
+                                       data-parsley-required-message="请输入产品名称"/>
+                                <label for="model" class="text-muted">规格型号<span style="color: red;">*</span></label>
+                                <input id="model" name="model" type="text" class="form-control required"
+                                       data-parsley-required-message="请输入规格型号"/>
+
+                                <label for="number" class="text-muted">数量<span style="color: red;">*</span></label>
+                                <input id="number" name="number" type="text" class="form-control required"
+                                       onblur="checkNum(this)" data-parsley-required-message="请输入数量"/>
+                                <label for="unit" class="text-muted">单位</label>
+                                <select id="unit" name="unit" type="text" class="form-control">
+                                    <option value="个">个</option>
+                                    <option value="支">支</option>
+                                    <option value="斤">斤</option>
+                                    <option value="G">G</option>
+                                    <option value="KG">KG</option>
+                                    <option value="吨">吨</option>
+                                </select>
+                                <label for="unitPrice" class="text-muted">单价<span style="color: red;">*</span></label>
+                                <input id="unitPrice" name="unitPrice" type="text" class="form-control required"
+                                       onblur="checkNum(this)" data-parsley-required-message="请输入单价"/>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" onclick="addProduct();">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/product.js}"></script>
+<script type='text/javascript'>
+    $(function () {
+        toastr.options = {
+            'closeButton': true,
+            'positionClass': 'toast-top-center',
+            'timeOut': '5000'
+        };
+    })
+
+</script>
+
+</body>
+</html>

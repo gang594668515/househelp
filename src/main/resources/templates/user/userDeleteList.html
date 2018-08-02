@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
+<body>
+<section layout:fragment="content">
+    <div class="content-wrapper">
+        <h3>已删用户列表</h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>序号</th>
+                <th>用户ID</th>
+                <th>用户名</th>
+                <th>简介</th>
+                <th>手机</th>
+                <th>邮箱</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="user,userStat:${users}">
+                <td th:text="${userStat.count}"></td>
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.userName}"></td>
+                <td th:text="${user.introduction==null?'暂无简介':user.introduction}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm"
+                            th:onclick="'recoverUser('+${user.id}+');'">恢复
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<script th:src="@{/js/user.js}"></script>
+<script type='text/javascript'>
+    $(function () {
+        toastr.options = {
+            'closeButton': true,
+            'positionClass': 'toast-top-center',
+            'timeOut': '5000'
+        };
+    })
+</script>
+</body>
+</html>

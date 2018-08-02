@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>新增购买商</h3>
+        <div class="container-fluid">
+            <form id="addBuyerForm" ata-parsley-validate="true" onsubmit="return false">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="alert alert-danger text-center" id="buyerError"></div>
+                            <div class="page-header">
+                                <span>购买商是企业名称，一旦保存不能修改；若无手机号码请输入通用13000000000；邮箱、电话二选一填写。</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="corpName" class="text-muted">购买商<span style="color: red;">*</span></label>
+                                <input id="corpName" name="corpName" type="text" class="form-control required"
+                                       data-parsley-required-message="请输入企业名称"/>
+                                <label for="userName" class="text-muted">联系人</label>
+                                <input id="userName" name="userName" type="text" class="form-control"/>
+                                <label for="phone" class="text-muted">手机号码<span style="color: red;">*</span></label>
+                                <input id="phone" name="phone" type="text" class="form-control required"
+                                       pattern="/^1\d{10}$/"
+                                       data-parsley-pattern-message="请输入正确的手机号码"
+                                       data-parsley-required-message="请输入手机号码"/>
+                                <label for="phone" class="text-muted">邮件（电话）</label>
+                                <input id="email" name="email" type="text" class="form-control"/>
+                                <label for="zipCode" class="text-muted">邮编</label>
+                                <input id="zipCode" name="zipCode" type="text" class="form-control"/>
+                                <label for="address" class="text-muted">地址</label>
+                                <input id="address" name="address" type="text" class="form-control"/>
+                                <label for="qualityType" class="text-muted">评级</label>
+                                <select id="qualityType" name="qualityType" type="text" class="form-control">
+                                    <option value="优质">优质</option>
+                                    <option value="一般">一般</option>
+                                    <option value="差劲">差劲</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" onclick="addBuyer();">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/buyer.js}"></script>
+<script type='text/javascript'>
+    $(function () {
+        toastr.options = {
+            'closeButton': true,
+            'positionClass': 'toast-top-center',
+            'timeOut': '5000'
+        };
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside class="aside" th:fragment="left">
+    <div class="aside-inner">
+        <nav class="sidebar" data-sidebar-anyclick-close="">
+            <ul class="nav">
+                <li class="has-user-block">
+                    <div>
+                        <div class="item user-block">
+                            <div class="user-block-picture">
+                                <div class="user-block-status">
+                                    <img alt="" class="img-thumbnail img-circle"
+                                         th:src="'/user/showHeadPortrait?fileName='+${user.profilePicture}"
+                                         id="leftProfilePicture"/>
+                                    <div class="circle circle-success circle-lg"></div>
+                                </div>
+                            </div>
+                            <div class="user-block-info">
+                                <div class="user-block-name" th:text="'欢迎  '+${user.userName}" id="leftUserName">欢迎 欢迎
+                                </div>
+                                <div class="user-block-role"
+                                     th:text="${user.introduction == null ? '暂无简介' : user.introduction.length() gt 10 ? user.introduction.substring(0,10)+'...' : user.introduction}"
+                                     id="leftIntroduction">暂无简介
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-heading ">主导航</li>
+                <li class="" aria-multiselectable="true">
+                    <a title="产品管理" data-toggle="collapse" data-parent="#productManage" href="#productManage"
+                       aria-expanded="true" aria-controls="productManage">
+                        <em class="icon-diamond"></em>
+                        <span>产品管理</span>
+                    </a>
+                    <ul id="productManage" class="nav panel-collapse sidebar-subnav collapse"
+                        aria-labelledby="productManage">
+                        <li id="addProduct" class=" "><a href="javascript:void(0);"
+                                                         onclick="locationUrl('/addProduct','addProduct')">
+                            <em class="icon-arrow-right"></em>
+                            <span>新增产品</span></a></li>
+                        <li id="productList" class=" "><a href="javascript:void(0);"
+                                                          onclick="locationUrl('/productList/s/s/0','productList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>在售的产品</span></a></li>
+                        <li id="productDeleteList" class=" "><a href="javascript:void(0);"
+                                                                onclick="locationUrl('/productDeleteList/s/s/0','productDeleteList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>停售的产品</span></a></li>
+                    </ul>
+                </li>
+                <li class="" aria-multiselectable="true">
+                    <a title="产品销售单" data-toggle="collapse" data-parent="#saleOrderManage" href="#saleOrderManage"
+                       aria-expanded="true" aria-controls="saleOrderManage">
+                        <em class="icon-list"></em>
+                        <span>产品销售单</span>
+                    </a>
+                    <ul id="saleOrderManage" class="nav panel-collapse sidebar-subnav collapse"
+                        aria-labelledby="saleOrderManage">
+                        <li id="addSaleOrder" class=" "><a href="javascript:void(0);"
+                                                           onclick="locationUrl('/addSaleOrder','addSaleOrder')">
+                            <em class="icon-arrow-right"></em>
+                            <span>新增销售单</span></a></li>
+                        <li id="saleOrderList" class=" "><a href="javascript:void(0);"
+                                                            onclick="locationUrl('/saleOrderList/s/s/s/0','saleOrderList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>正常的销售单</span></a></li>
+                        <li id="saleOrderDeleteList" class=" "><a href="javascript:void(0);"
+                                                                  onclick="locationUrl('/saleOrderDeleteList/s/s/s/0','saleOrderDeleteList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>已删的销售单</span></a></li>
+                    </ul>
+                </li>
+                <li class="" aria-multiselectable="true">
+                    <a title="原料采购单" data-toggle="collapse" data-parent="#materialManage" href="#materialManage"
+                       aria-expanded="true" aria-controls="materialManage">
+                        <em class="icon-list"></em>
+                        <span>原料采购单</span>
+                    </a>
+                    <ul id="materialManage" class="nav panel-collapse sidebar-subnav collapse"
+                        aria-labelledby="materialManage">
+                        <li id="addMaterial" class=" "><a href="javascript:void(0);"
+                                                          onclick="locationUrl('/addMaterial','addMaterial')">
+                            <em class="icon-arrow-right"></em>
+                            <span>新增采购单</span></a></li>
+                        <li id="materialList" class=" "><a href="javascript:void(0);"
+                                                           onclick="locationUrl('/materialList/s/s/s/0','materialList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>正常的采购单</span></a></li>
+                        <li id="materialDeleteList" class=" "><a href="javascript:void(0);"
+                                                                 onclick="locationUrl('/materialDeleteList/s/s/s/0','materialDeleteList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>已删的采购单</span></a></li>
+                    </ul>
+                </li>
+                <li class="" aria-multiselectable="true">
+                    <a title="产品购买商" data-toggle="collapse" data-parent="#buyerManage" href="#buyerManage"
+                       aria-expanded="true" aria-controls="buyerManage">
+                        <em class="icon-people"></em>
+                        <span>产品购买商</span>
+                    </a>
+                    <ul id="buyerManage" class="nav panel-collapse sidebar-subnav collapse"
+                        aria-labelledby="buyerManage">
+                        <li id="addBuyer" class=" "><a href="javascript:void(0);"
+                                                       onclick="locationUrl('/addBuyer','addBuyer')">
+                            <em class="icon-arrow-right"></em>
+                            <span>新增购买商</span></a></li>
+                        <li id="buyerList" class=" "><a href="javascript:void(0);"
+                                                        onclick="locationUrl('/buyerList/s/s/0','buyerList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>正常的购买商</span></a></li>
+                        <li id="buyerDeleteList" class=" "><a href="javascript:void(0);"
+                                                              onclick="locationUrl('/buyerDeleteList/s/s/0','buyerDeleteList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>已删的购买商</span></a></li>
+                    </ul>
+                </li>
+                <li class="" aria-multiselectable="true">
+                    <a title="原料供应商" data-toggle="collapse" data-parent="#supplierManage" href="#supplierManage"
+                       aria-expanded="true" aria-controls="supplierManage">
+                        <em class="icon-people"></em>
+                        <span>原料供应商</span>
+                    </a>
+                    <ul id="supplierManage" class="nav panel-collapse sidebar-subnav collapse"
+                        aria-labelledby="supplierManage">
+                        <li id="addSupplier" class=" "><a href="javascript:void(0);"
+                                                          onclick="locationUrl('/addSupplier','addSupplier')">
+                            <em class="icon-arrow-right"></em>
+                            <span>新增供应商</span></a></li>
+                        <li id="supplierList" class=" "><a href="javascript:void(0);"
+                                                           onclick="locationUrl('/supplierList/s/s/0','supplierList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>正常的供应商</span></a></li>
+                        <li id="supplierDeleteList" class=" "><a href="javascript:void(0);"
+                                                                 onclick="locationUrl('/supplierDeleteList/s/s/0','supplierDeleteList')">
+                            <em class="icon-arrow-right"></em>
+                            <span>已删的供应商</span></a></li>
+                    </ul>
+                </li>
+                <li class="" aria-multiselectable="true">
+                    <a title="用户管理" data-toggle="collapse" data-parent="#userManage" href="#userManage"
+                       aria-expanded="true" aria-controls="userManage">
+                        <em class="icon-user"></em>
+                        <span>用户管理</span>
+                    </a>
+                    <ul id="userManage" class="nav panel-collapse sidebar-subnav collapse" aria-labelledby="userManage">
+                        <li id="userList" class=" ">
+                            <a href="javascript:void(0);" onclick="locationUrl('/userList','userList')">
+                                <em class="icon-arrow-right"></em>
+                                <span>正常的用户</span></a></li>
+                        <li id="userDeleteList" class=" ">
+                            <a href="javascript:void(0);" onclick="locationUrl('/userDeleteList','userDeleteList')">
+                                <em class="icon-arrow-right"></em>
+                                <span>已删的用户</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+</body>
+</html>
+

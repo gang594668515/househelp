@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>编辑购买商</h3>
+        <div class="container-fluid">
+            <form id="updateBuyerForm" ata-parsley-validate="true" onsubmit="return false">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="alert alert-danger text-center" id="buyerError"></div>
+                            <div class="form-group">
+                                <input id="id" name="id" type="hidden" th:value="${buyer.id}"/>
+                                <label for="corpName" class="text-muted">企业名称</label>
+                                <input id="corpName" name="corpName" type="text" class="form-control"
+                                       th:value="${buyer.corpName}" readonly/>
+                                <label for="userName" class="text-muted">联系人</label>
+                                <input id="userName" name="userName" type="text" class="form-control" th:value="${buyer.userName}"/>
+                                <label for="phone" class="text-muted">手机号码</label>
+                                <input id="phone" name="phone" type="text" class="form-control"
+                                       pattern="/^1\d{10}$/"
+                                       data-parsley-pattern-message="请输入正确的手机号码" th:value="${buyer.phone}"/>
+                                <label for="phone" class="text-muted">邮件（电话）</label>
+                                <input id="email" name="email" type="text" class="form-control" th:value="${buyer.email}"/>
+                                <label for="zipCode" class="text-muted">邮编</label>
+                                <input id="zipCode" name="zipCode" type="text" class="form-control" th:value="${buyer.zipCode}"/>
+                                <label for="address" class="text-muted">地址</label>
+                                <input id="address" name="address" type="text" class="form-control" th:value="${buyer.address}"/>
+                                <label for="qualityType" class="text-muted">评级</label>
+                                <select id="qualityType" name="qualityType" class="form-control" th:field="${buyer.qualityType}">
+                                    <option th:selected="${buyer.qualityType=='优质'}" value="优质">优质</option>
+                                    <option th:selected="${buyer.qualityType=='一般'}" value="一般">一般</option>
+                                    <option th:selected="${buyer.qualityType=='差劲'}" value="差劲">差劲</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" onclick="updateBuyer();">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/buyer.js}"></script>
+<script type='text/javascript'>
+    $(function () {
+        toastr.options = {
+            'closeButton': true,
+            'positionClass': 'toast-top-center',
+            'timeOut': '5000'
+        };
+    })
+</script>
+</body>
+</html>

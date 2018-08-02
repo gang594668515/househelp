@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+     <header class="topnavbar-wrapper" th:fragment="header">
+
+      <nav class="navbar topnavbar" role="navigation">
+
+         <div class="navbar-header">
+
+            <a class="navbar-brand" href="/index">
+
+               <div class="brand-logo">
+
+                  <img class="img-responsive" alt="App Logo" th:src="@{/img/logo.png}"  /></div>
+
+               <div class="brand-logo-collapsed">
+
+                  <img class="img-responsive" alt="App Logo" th:src="@{/img/logo.png}" /></div>
+
+            </a>
+
+         </div>
+
+         <div class="nav-wrapper">
+
+            <ul class="nav navbar-nav">
+
+               <li>
+
+                  <a title="缩小/扩大侧栏" class="hidden-xs" data-toggle-state="aside-collapsed" href="#"> <em class="fa fa-navicon"></em>
+
+                  </a>
+
+                  <a title="缩小/扩大侧栏" class="visible-xs sidebar-toggle" data-no-persist="true" data-toggle-state="aside-toggled" href="#"> <em class="fa fa-navicon"></em>
+
+                  </a>
+
+               </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+               <li>
+
+                  <a title="设置" data-no-persist="true" data-toggle-state="offsidebar-open" href="javascript:void(0);">
+
+                     <em class="icon-settings"></em>
+
+                  </a>
+
+               </li>
+
+            </ul>
+
+         </div>
+
+      </nav>
+
+   </header>
+
+</body>
+
+</html>

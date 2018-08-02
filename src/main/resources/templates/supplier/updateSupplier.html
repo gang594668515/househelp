@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='favorites'"></head>
+<body>
+<section>
+    <div class="content-wrapper">
+        <h3>编辑供应商</h3>
+        <div class="container-fluid">
+            <form id="updateSupplierForm" ata-parsley-validate="true" onsubmit="return false">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="alert alert-danger text-center" id="supplierError"></div>
+                            <div class="form-group">
+                                <input id="id" name="id" type="hidden" th:value="${supplier.id}"/>
+                                <label for="corpName" class="text-muted">企业名称</label>
+                                <input id="corpName" name="corpName" type="text" class="form-control"
+                                       th:value="${supplier.corpName}" readonly/>
+                                <label for="userName" class="text-muted">联系人</label>
+                                <input id="userName" name="userName" type="text" class="form-control" th:value="${supplier.userName}"/>
+                                <label for="phone" class="text-muted">手机号码</label>
+                                <input id="phone" name="phone" type="text" class="form-control"
+                                       pattern="/^1\d{10}$/"
+                                       data-parsley-pattern-message="请输入正确的手机号码" th:value="${supplier.phone}"/>
+                                <label for="phone" class="text-muted">邮件（电话）</label>
+                                <input id="email" name="email" type="text" class="form-control" th:value="${supplier.email}"/>
+                                <label for="address" class="text-muted">地址</label>
+                                <input id="address" name="address" type="text" class="form-control" th:value="${supplier.address}"/>
+                                <label for="payMethod" class="text-muted">支付方式</label>
+                                <input id="payMethod" name="payMethod" type="text" class="form-control" th:value="${supplier.payMethod}"/>
+                                <label for="account" class="text-muted">支付账户</label>
+                                <input id="account" name="account" type="text" class="form-control" th:value="${supplier.account}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" onclick="updateSupplier();">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/supplier.js}"></script>
+<script type='text/javascript'>
+    $(function () {
+        toastr.options = {
+            'closeButton': true,
+            'positionClass': 'toast-top-center',
+            'timeOut': '5000'
+        };
+    })
+</script>
+</body>
+</html>
